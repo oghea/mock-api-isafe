@@ -43,13 +43,6 @@
 
   const router = new Router();
 
-  // try {
-  //   await require(`db`);
-  // } catch (err) {
-  //   process.emit(`uncaughtException`, err);
-  //   process.exit();
-  // }
-
   app.on(`error`, err => {
     logger.log({ level: 'error', message: err });
     process.emit(`uncaughtException`, err);
@@ -58,15 +51,6 @@
   app.use(cors());
   app.use(bodyParser({ multipart: true }));
   app.use(koaLogger());
-  app.use(async (ctx, next) => {
-    const token = ctx.request.headers.adx
-    if(token == config.serviceAuth){
-      await next()
-    }
-    else {
-      ctx.throw(401, 'Service Auth')
-    }
-  })
 
   app.useRouter = (router) => {
     // Load all router from router folder

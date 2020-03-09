@@ -16,15 +16,16 @@ exports.getApiInfo = async (ctx) => {
 
 exports.SignIn = async (ctx) => {
   const { username, password } = ctx.request.body;
+  console.log(ctx.request.body)
 
   if(username == 'isafeuser' && password == 'isafe') {
     ctx.body = {
       isChangePassword: false,
-      status: 'Success'
+      status: 'Success',
+      token: 'abc123'
     }
   } else {
     ctx.throw(401, 'Wrong username and password')
   }
 
-  
 };
