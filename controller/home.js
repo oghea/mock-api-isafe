@@ -15,15 +15,15 @@ exports.getApiInfo = async (ctx) => {
 };
 
 exports.SignIn = async (ctx) => {
-  const { email, password } = ctx.request.body;
+  const { username, password } = ctx.request.body;
 
-  if(email == 'a.pprayoga18@gmail.com' && password == 'isafe') {
+  if(username == 'isafeuser' && password == 'isafe') {
     ctx.body = {
       isChangePassword: false,
       status: 'Success'
     }
   } else {
-    ctx.throw(401, 'Wrong email and password')
+    ctx.throw(401, 'Wrong username and password')
   }
 
   
